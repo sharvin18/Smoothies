@@ -21,12 +21,6 @@ const userSchema = new Schema({
 
 });
 
-// Fire the function after the doc has been saved to database
-// userSchema.post('save', function (doc, next) {
-//     console.log("User saved", doc);
-//     next();
-// });
-
 // Fire the function before the doc is saved to the db
 // Use a normal function instead of arrow fn so as to use 
 // the current doc instance with the keyword "this"
@@ -37,7 +31,6 @@ userSchema.pre('save', async function (next){
 });
 
 // Static method to login a user
-
 userSchema.statics.login = async function(email, password) {
 
     const user = await this.findOne({ email });
